@@ -96,7 +96,7 @@ The functions in this model:
 """
 import tensorflow as tf
 
-@tf.function
+#tf.function
 def huber_loss(x, delta=1.0):
     """Reference: https://en.wikipedia.org/wiki/Huber_loss"""
     return tf.where(
@@ -147,7 +147,7 @@ class DEEPQ(tf.Module):
 
         return output_actions, None, None, None
 
-    @tf.function()
+    #@tf.function()
     def train(self, obs0, actions, rewards, obs1, dones, importance_weights):
       with tf.GradientTape() as tape:
         q_t = self.q_network(obs0)
@@ -182,7 +182,7 @@ class DEEPQ(tf.Module):
 
       return td_error
 
-    @tf.function(autograph=False)
+    #tf.function(autograph=False)
     def update_target(self):
       q_vars = self.q_network.trainable_variables
       target_q_vars = self.target_q_network.trainable_variables
