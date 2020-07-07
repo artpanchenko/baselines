@@ -125,7 +125,7 @@ class DEEPQ(tf.Module):
         self.target_q_network = q_func(observation_shape, num_actions)
       self.eps = tf.Variable(0., name="eps")
 
-    @tf.function
+    #@tf.function
     def step(self, obs, stochastic=True, update_eps=-1):
       if self.param_noise:
         raise ValueError('not supporting noise yet')
